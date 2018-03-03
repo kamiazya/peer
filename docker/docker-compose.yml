@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+  front:
+    build:
+      context: ./front
+    volumes:
+      - ./front/webroot:/usr/local/apache2/htdocs/:ro
+    ports:
+      - 8080:80
+
+  server:
+    build:
+      context: ./server
+    ports:
+      - 9000:9000

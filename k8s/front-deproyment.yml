@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: peer-front-deployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: peer-front
+  template:
+    metadata:
+      labels:
+        app: peer-front
+    spec:
+      containers:
+      - name: peer-front
+        image: kamiazya/peer-front
+        ports:
+        - containerPort: 80

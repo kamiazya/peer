@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: peer-server-deployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: peer-server
+  template:
+    metadata:
+      labels:
+        app: peer-server
+    spec:
+      containers:
+      - name: peer-server
+        image: kamiazya/peer-server
+        ports:
+        - containerPort: 80

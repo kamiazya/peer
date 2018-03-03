@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: peer-front-service
+spec:
+  selector:
+    app: peer-front
+  ports:
+  - name: http
+    protocol: TCP
+    # ローカル(kubernetesの外)からPodへ接続用ポート
+    port: 80
+    # コンテナ（Pod）内の規定ポート
+    targetPort: 80

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+    <title>Document</title>
+    <script>
+
+        var peer = new Peer('pick-an-id', {
+            host: 'localhost',
+            port: 9000,
+        });
+
+        var conn = peer.connect('another-peers-id');
+
+        conn.on('open', function(){
+            conn.send('hi!');
+        });
+
+        peer.on('open', function (id) {
+            console.log(id);
+        });
+
+
+        peer.on('connection', function (conn) {
+            conn.on('data', function (data) {
+                // Will print 'hi!'
+                console.log(data);
+            });
+        });
+
+    </script>
+</head>
+<body>
+    hello world
+</body>
+</html>
